@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 void	emptymap(char map[6][6]) //Fill 4*4 array with '0'
 {
 	int	i;
@@ -56,4 +58,18 @@ void	printmap(char map[6][6]) //Show event 2d array 4*4
 		putchar("\n");
 		row++;
 	}
+}
+
+bool	checkmap(char map[6][6]) //Check all pov rule by event array
+{
+	int	i;
+	
+	i = 1;
+	while (i < 5)
+	{
+		if (p_row(map[i]) != map[i][0] || d_row(map[i]) != map[i][5] || p_col(map, i) != map[0][i] || d_col(map, i) != map[5][i])
+			return false;
+		i++;
+	}
+	return true;
 }
